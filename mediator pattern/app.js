@@ -1,20 +1,20 @@
 // chatroom is the mediator, users are the colleagues of the chatroom
 
-const User=function(name){
+const User = function(name){
   this.name =name;
-  this.chatroom =null
+  this.chatroom = null;
 };
 
 User.prototype.send = function(message,to){
-  chatroom.send(message, this, to);
-}
+  chatroom.send(message,this,to);
+};
 
-User.prototype.receive= function(message,from){
+User.prototype.receive = function(message, from){
   console.log(`${from.name} to ${this.name}: ${message}`);
 }
 
 const Chatroom = function(){
-  const users = {};
+  const users ={};
 
   return{
     register:function(user){
@@ -34,17 +34,18 @@ const Chatroom = function(){
         }
       }
     }
-  }
+  };
 
-  const chatroom = new Chatroom();
-
-  const brad = new User('brad'); 
+  const brad = new User('brad');
   const jeff = new User('jeff');
   const sara = new User('sara');
+
+  const chatroom = new Chatroom();
 
   chatroom.register(brad);
   chatroom.register(jeff);
   chatroom.register(sara);
 
-  brad.send("Hello Jeff",jeff);
-  jeff.send("Hello Everyone!");
+brad.send('Hi Jeff',jeff);
+sara.send('Hello Brad',brad);
+jeff.send('Hey everyone!');  
